@@ -10,9 +10,15 @@
         <plugin type="org.mybatis.generator.plugins.RowBoundsPlugin"/>
 
         <jdbcConnection driverClass="com.mysql.cj.jdbc.Driver"
+<<<<<<< HEAD
             connectionURL="jdbc:mysql://106.15.225.159:3306/campusapp?useUnicode=true&amp;characterEncoding=utf-8&amp;useSSL=false&amp;serverTimezone = UTC"
             userId="olsAdmin"
             password="6789@jkl">
+=======
+            connectionURL="jdbc:mysql://localhost:3306/campusapp?useUnicode=true&amp;characterEncoding=utf-8&amp;useSSL=false&amp;serverTimezone = UTC"
+            userId="root"
+            password="123456">
+>>>>>>> 45b1a026d333bb913c800a801d0cf78100269396
             <property name="nullCatalogMeansCurrent" value="true"/>
         </jdbcConnection>
         <javaTypeResolver >
@@ -43,8 +49,11 @@
         <table tableName="comment" domainObjectName="Comment" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false">
             <generatedKey column="CommentId" sqlStatement="MySql" identity="true"/>
         </table>
+<<<<<<< HEAD
         <table tableName="product" domainObjectName="Product" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false">
             <generatedKey column="id" sqlStatement="MySql" identity="true"/>
         </table>
+=======
+>>>>>>> 45b1a026d333bb913c800a801d0cf78100269396
     </context>
 </generatorConfiguration>

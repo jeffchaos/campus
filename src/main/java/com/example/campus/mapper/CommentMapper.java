@@ -50,6 +50,9 @@ public interface CommentMapper {
      * @mbg.generated Tue Jun 02 17:06:36 CST 2020
      */
     int updateByPrimaryKey(Comment record);
+<<<<<<< HEAD
 
 
+=======
+>>>>>>> 45b1a026d333bb913c800a801d0cf78100269396
 }
