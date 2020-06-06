@@ -11,22 +11,12 @@
 ## 可以访问如下地址查看: https://usercenter.console.aliyun.com/#/manage/ak
 #alibaba.cloud.access-key=****
 #alibaba.cloud.secret-key=****
-<<<<<<< HEAD
 spring:
   #数据源
   datasource:
     url: jdbc:mysql://${mysql.address}/campusapp?useUnicode=true&characterEncoding=UTF-8&serverTimezone=GMT%2B8
     username: ${mysql.username}
     password: ${mysql.password}
-=======
-
-spring:
-  #数据源
-  datasource:
-    url: jdbc:mysql://localhost:3306/campusapp?useUnicode=true&characterEncoding=UTF-8&serverTimezone=GMT%2B8
-    username: root
-    password: 123456
->>>>>>> 45b1a026d333bb913c800a801d0cf78100269396
     driver-class-name: com.mysql.cj.jdbc.Driver
  #使用druid数据源
 type: com.alibaba.druid.pool.DruidDataSource
@@ -58,10 +48,6 @@ reasonable: true
 supportMethodsArguments: true
 params: count=countSql
 
-<<<<<<< HEAD
 server:
   port: 8081
 ip: 192.168.43.11
-=======
-
->>>>>>> 45b1a026d333bb913c800a801d0cf78100269396

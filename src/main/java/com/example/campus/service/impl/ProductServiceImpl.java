@@ -29,8 +29,8 @@ public class ProductServiceImpl implements ProductService {
     public List<Product> getAllProduct() {
         List<Product> productList = productMapper.selAll();
         productList.forEach(e->{
-            System.out.println(ip+":"+getIpAndPort.getPort()+"/"+e.getImgsrc());
-            e.setImgsrc("http://"+ip+":"+getIpAndPort.getPort()+"/"+e.getImgsrc());
+            System.out.println(ip+":"+getIpAndPort.getPort()+"/img/"+e.getImgsrc());
+            e.setImgsrc("http://"+ip+":"+getIpAndPort.getPort()+"/img/"+e.getImgsrc());
         });
         return productList;
     }
