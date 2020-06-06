@@ -1,0 +1,52 @@
+##################################### common config : ####################################
+#spring.application.name=campus
+## 应用服务web访问端口
+#server.port=8080
+## ActuatorWeb访问端口
+#management.server.port=8081
+#management.endpoints.jmx.exposure.include=*
+#management.endpoints.web.exposure.include=*
+#management.endpoint.health.show-details=always
+## spring cloud access&secret config
+## 可以访问如下地址查看: https://usercenter.console.aliyun.com/#/manage/ak
+#alibaba.cloud.access-key=****
+#alibaba.cloud.secret-key=****
+
+spring:
+  #数据源
+  datasource:
+    url: jdbc:mysql://localhost:3306/campusapp?useUnicode=true&characterEncoding=UTF-8&serverTimezone=GMT%2B8
+    username: root
+    password: 123456
+    driver-class-name: com.mysql.cj.jdbc.Driver
+ #使用druid数据源
+type: com.alibaba.druid.pool.DruidDataSource
+filters: stat
+maxActive: 20
+initialSize: 1
+maxWait: 60000
+minIdle: 1
+timeBetweenEvictionRunsMillis: 60000
+minEvictableIdleTimeMillis: 300000
+validationQuery: select 'x'
+testWhileIdle: true
+testOnBorrow: false
+testOnReturn: false
+poolPreparedStatements: true
+maxOpenPreparedStatements: 20
+
+mybatis:
+  mapper-locations: classpath:mapper/*.xml   #这里是mapper的绝对路径
+  type-aliases-package: com.example.campus.entity  #这里是实体类的绝对路径
+
+logging:
+level:
+com.sfc.sso_server.dao.interfaces: DEBUG
+
+pagehelper:
+helperDialect: mysql
+reasonable: true
+supportMethodsArguments: true
+params: count=countSql
+
+
