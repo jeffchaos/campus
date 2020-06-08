@@ -206,4 +206,20 @@
         where
           status = 1
     </select>
+    <select id="selByType" resultType="com.example.campus.entity.Product">
+        select
+          id,
+          decription,
+          price,
+          publish_time,
+          publish_userno,
+          imgsrc,
+          status,
+          flag
+        from
+          product
+        where
+          status = 1
+          and type = #{type}
+    </select>
 </mapper>

@@ -28,15 +28,20 @@ public class ProductServiceImpl implements ProductService {
     @Override
     public List<Product> getAllProduct() {
         List<Product> productList = productMapper.selAll();
-        productList.forEach(e->{
-            System.out.println(ip+":"+getIpAndPort.getPort()+"/img/"+e.getImgsrc());
-            e.setImgsrc("http://"+ip+":"+getIpAndPort.getPort()+"/img/"+e.getImgsrc());
-        });
+        convertImageUrl(productList);
         return productList;
     }
 
     @Override
     public int storeOneProduct(Product product) {
         return productMapper.insert(product);
+    }
+
+    @Override
+    public void convertImageUrl(List<Product> productList) {
+        productList.forEach(e->{
+            System.out.println(ip+":"+getIpAndPort.getPort()+"/img/"+e.getImgsrc());
+            e.setImgsrc("http://"+ip+":"+getIpAndPort.getPort()+"/img/"+e.getImgsrc());
+        });
     }
 }

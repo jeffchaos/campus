@@ -13,4 +13,6 @@ public interface ProductService {
 
     int storeOneProduct(Product product);
 
+    void convertImageUrl (List<Product> productList);
+
 }
