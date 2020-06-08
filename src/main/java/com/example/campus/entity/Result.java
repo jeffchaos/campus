@@ -5,7 +5,7 @@ import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
 
-import java.util.HashMap;
+import java.util.Map;
 
 /**
  * 返回数据给前端的信息实体类
@@ -16,10 +16,10 @@ import java.util.HashMap;
 @Setter
 @ToString
 public class Result {
-    private HashMap<String,Object> data;
+    private Map<String,Object> data;
     private Meta meta;
 
-    public Result(HashMap<String, Object> data,String status,String msg) {
+    public Result(Map<String, Object> data, String status, String msg) {
         this.meta=new Meta(status,msg);
         this.data = data;
     }

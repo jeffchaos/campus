@@ -23,9 +23,9 @@ public class CreateTestData {
     public void createDataOfProduct(){
         for (int i = 0; i < 500; i++) {
             productMapper.insert(Product.builder()
-                .title("学姐二手内衣")
-                .decription("学姐自己穿的，太多了，毕业全拿走不方便，想卖一些。有兴趣得联系我哦！")
-                .price(100.0)
+                .title("学长二手电脑")
+                .decription("此电脑是我自己使用的，平时拿来写写代码，玩玩游戏。电脑是17年买的，无任何故障，运行流畅。有意者联系我！")
+                .price(2000.0)
                 .flag(BuyOrSellEnum.WANT_SELL.getCode())
                 .imgsrc("yuyy.info")
                 .publishTime(new Date())

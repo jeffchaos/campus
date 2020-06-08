@@ -44,4 +44,11 @@ public class ProductServiceImpl implements ProductService {
             e.setImgsrc("http://"+ip+":"+getIpAndPort.getPort()+"/img/"+e.getImgsrc());
         });
     }
+
+    @Override
+    public List<Product> getProductByType(String type) {
+        List<Product> productList = productMapper.selByType(type);
+        convertImageUrl(productList);
+        return productList;
+    }
 }

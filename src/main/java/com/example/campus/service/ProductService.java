@@ -15,4 +15,6 @@ public interface ProductService {
 
     void convertImageUrl (List<Product> productList);
 
+    List<Product> getProductByType(String type);
+
 }

@@ -16,10 +16,7 @@ import org.springframework.web.multipart.MultipartRequest;
 import javax.servlet.http.HttpServletRequest;
 import java.io.File;
 import java.io.IOException;
-import java.util.Enumeration;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.Map;
+import java.util.*;
 
 /**
  * @author yuyy
@@ -33,7 +30,7 @@ public class ProductController {
 
     @GetMapping("products")
     public String getAllProduct(){
-        HashMap<String, Object> map = new HashMap<>();
+        Map<String, Object> map = new HashMap<>();
         map.put("products",productService.getAllProduct());
         if(map.size()>0){
             return JSONObject.toJSONString(new Result(map,"200","success"));
@@ -87,5 +84,13 @@ public class ProductController {
         String filename = "/temp-rainy/" + fileName;
         model.addAttribute("filename", filename);
         return "ok";
+    }
+
+    @GetMapping("products")
+    public String getProductByType(String type){
+        List<Product> product = productService.getProductByType(type);
+        Map<String,Object> map=new HashMap<>();
+        map.put("productList",product);
+        return JSONObject.toJSONString(new Result(map,"200","success"));
     }
 }

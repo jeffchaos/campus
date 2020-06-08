@@ -55,5 +55,5 @@ public interface ProductMapper {
 
     List<Product> selAll();
 
-    List<Product> selByType();
+    List<Product> selByType(String type);
 }
