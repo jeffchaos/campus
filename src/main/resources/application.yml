@@ -50,4 +50,4 @@ params: count=countSql
 
 server:
   port: 8081
-ip: 192.168.43.11
+ip: 192.168.43.55

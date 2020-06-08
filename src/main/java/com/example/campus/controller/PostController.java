@@ -16,6 +16,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.File;
 import java.io.IOException;
+import java.util.Enumeration;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -42,8 +43,15 @@ public class PostController {
 //    }
     @RequestMapping(value = "upload")
     public String upload(/*@RequestParam(value = "file_upload")*/ MultipartFile multipartFile, HttpServletRequest request, Model model, MultipartRequest multipartRequest){
-        if (multipartFile.isEmpty()) {
-            System.out.println("文件为空空");
+//        if (multipartFile.isEmpty()) {
+//            System.out.`intln("文件为空空");
+//        }
+
+        Enumeration params = request.getParameterNames();
+        while (params.hasMoreElements()){
+            String name = (String) params.nextElement();
+            String value = request.getParameter(name);
+            System.out.println(name+":"+value);
         }
 
         System.out.println("文件开始上传");

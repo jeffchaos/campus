@@ -1,9 +1,11 @@
 package com.example.campus.controller;
 
 import com.alibaba.fastjson.JSONObject;
+import com.example.campus.entity.Product;
 import com.example.campus.entity.Result;
 import com.example.campus.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -29,13 +31,13 @@ public class ProductController {
         return JSONObject.toJSONString(new Result("201","not found"));
     }
 
-//    @PostMapping("products")
-//    public String storeOneProduct(Product product){
-//        if(1==productService.storeOneProduct(product)){
-//            return JSONObject.toJSONString(new Result("200","success"));
-//        }
-//        return JSONObject.toJSONString(new Result("201","failure"));
-//    }
+    @PostMapping("products")
+    public String storeOneProduct(Product product){
+        if(1==productService.storeOneProduct(product)){
+            return JSONObject.toJSONString(new Result("200","success"));
+        }
+        return JSONObject.toJSONString(new Result("201","failure"));
+    }
 
 
 }
