@@ -14,7 +14,7 @@
 spring:
   #数据源
   datasource:
-    url: jdbc:mysql://${mysql.address}/campusapp?useUnicode=true&characterEncoding=UTF-8&serverTimezone=GMT%2B8
+    url: jdbc:mysql://${mysql.address}/campusapp?useUnicode=true&characterEncoding=UTF-8&serverTimezone=GMT%2B8&allowMultiQueries=true
     username: ${mysql.username}
     password: ${mysql.password}
     driver-class-name: com.mysql.cj.jdbc.Driver
@@ -37,6 +37,8 @@ maxOpenPreparedStatements: 20
 mybatis:
   mapper-locations: classpath:mapper/*.xml   #这里是mapper的绝对路径
   type-aliases-package: com.example.campus.entity  #这里是实体类的绝对路径
+  configuration:
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
 
 logging:
 level:
@@ -50,4 +52,4 @@ params: count=countSql
 
 server:
   port: 8081
-ip: 192.168.43.11
+ip: 127.0.0.1

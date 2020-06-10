@@ -230,4 +230,7 @@
   <select id="selectUserByUserNo" resultType="com.example.campus.entity.User">
       select * from table user where UserNo=#{userno}
   </select>
+  <select id="getAllClass" resultType="String">
+    select distinct ClassName from user
+  </select>
 </mapper>

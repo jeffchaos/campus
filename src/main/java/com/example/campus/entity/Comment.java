@@ -1,5 +1,15 @@
 package com.example.campus.entity;
 
+import lombok.*;
+import lombok.experimental.Accessors;
+
+@Getter
+@Setter
+@ToString
+@NoArgsConstructor
+@AllArgsConstructor
+@Builder
+@Accessors(chain = true)
 public class Comment {
     /**
      *

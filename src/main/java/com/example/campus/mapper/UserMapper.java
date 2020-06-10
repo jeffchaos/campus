@@ -23,4 +23,5 @@ public interface UserMapper {
     int insertSelective(User record);
     User selectUserByUserNo(Map<String,String> map);
     List<User> getAllUsers();
+    List<String> getAllClass();
 }

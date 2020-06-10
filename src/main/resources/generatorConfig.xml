@@ -10,7 +10,7 @@
         <plugin type="org.mybatis.generator.plugins.RowBoundsPlugin"/>
 
         <jdbcConnection driverClass="com.mysql.cj.jdbc.Driver"
-            connectionURL="jdbc:mysql://106.15.225.159:3306/campusapp?useUnicode=true&amp;characterEncoding=utf-8&amp;useSSL=false&amp;serverTimezone = UTC"
+            connectionURL="jdbc:mysql://106.15.225.159:3306/campusapp?useUnicode=true&amp;characterEncoding=utf-8&amp;allowMultiQueries=true&amp;useSSL=false&amp;serverTimezone = UTC"
             userId="xxx"
             password="xxx">
             <property name="nullCatalogMeansCurrent" value="true"/>

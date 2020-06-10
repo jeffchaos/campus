@@ -119,4 +119,20 @@
       AcceptClass = #{acceptclass,jdbcType=VARCHAR}
     where Id = #{id,jdbcType=INTEGER}
   </update>
+  <insert id="creatMsg">
+    insert into message(content,PublishTime,AcceptClass) value (#{content},#{PublishTime},#{AcceptClass})
+  </insert>
+  <select id="getAllMsg" resultMap="BaseResultMap,total">
+    select SQL_CALC_FOUND_ROWS Id,
+    Content,PublishTime,AcceptClass
+    from message
+    where
+    1=1
+    <if test="searchInfo != ''">
+      and (Id like '%${searchInfo}%')
+    </if>
+    limit #{start},#{end};
+
+    SELECT FOUND_ROWS() as total;
+  </select>
 </mapper>

@@ -37,5 +37,7 @@ public class UserService {
         return userMapper.selectUserByUserNo(map);
     }
 
-
+    public List<String> getAllClass(){
+        return userMapper.getAllClass();
+    }
 }

@@ -1,6 +1,11 @@
 package com.example.campus.mapper;
 
+import com.example.campus.entity.Comment;
 import com.example.campus.entity.Message;
+
+import java.sql.Timestamp;
+import java.util.List;
+
 
 public interface MessageMapper {
     /**
@@ -50,4 +55,7 @@ public interface MessageMapper {
      * @mbg.generated Tue Jun 09 02:45:56 CST 2020
      */
     int updateByPrimaryKey(Message record);
+
+    int creatMsg(String content, Timestamp PublishTime, String AcceptClass);
+    List<List<Message>> getAllMsg(String searchInfo, int start, int end);
 }
