@@ -136,7 +136,7 @@
     SELECT FOUND_ROWS() as total;
   </select>
 
-    <select id="selMessageByUserId" resultType="BaseResultMap">
+    <select id="selMessageByUserId" resultMap="BaseResultMap">
         select
           Id,
           Content,

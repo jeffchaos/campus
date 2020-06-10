@@ -1,7 +1,12 @@
 package com.example.campus.entity;
 
+import lombok.AllArgsConstructor;
+import lombok.NoArgsConstructor;
+
 import java.util.Date;
 
+@AllArgsConstructor
+@NoArgsConstructor
 public class Message {
     /**
      *

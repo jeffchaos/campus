@@ -15,4 +15,8 @@ public class PostService {
     public List<Post> selectAllPosts(){
         return postMapper.selectAllPosts();
     }
+
+    public List<Post> getPostByType(String type){
+        return postMapper.selPostByType(type);
+    }
 }

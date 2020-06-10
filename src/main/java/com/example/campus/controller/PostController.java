@@ -1,8 +1,11 @@
 package com.example.campus.controller;
 
+import com.alibaba.fastjson.JSONObject;
 import com.example.campus.entity.Post;
+import com.example.campus.entity.Result;
 import com.example.campus.service.PostService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
@@ -63,5 +66,13 @@ public class PostController {
 //        model.addAttribute("filename", filename);
 //        return "ok";
 //    }
+
+    @GetMapping("getPostByType")
+    public String getPostByType(String type){
+        Map<String ,Object> map=new HashMap<>();
+        map.put("data",postService.getPostByType(type));
+        map.put("api","getPostByType");
+        return JSONObject.toJSONString(new Result(map,"200","获取帖子详情成功"));
+    }
 
 }

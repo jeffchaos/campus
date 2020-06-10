@@ -11,5 +11,5 @@ public interface MessageService {
     int creatMsg(String content,String AcceptClass);
     HashMap<String,Object> getAllMsg(String searchInfo, Integer pageNum, Integer pageSize);
 
-    List<Message> getMessageByUserId(int userId);
+    List<Message> getMessageByUserId(String userId);
 }

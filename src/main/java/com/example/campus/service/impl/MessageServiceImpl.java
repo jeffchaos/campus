@@ -38,7 +38,7 @@ public class MessageServiceImpl implements MessageService {
     }
 
     @Override
-    public List<Message> getMessageByUserId(int userId) {
+    public List<Message> getMessageByUserId(String userId) {
         return messageMapper.selMessageByUserId(userId);
     }
 }

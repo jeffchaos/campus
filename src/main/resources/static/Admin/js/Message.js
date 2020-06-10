@@ -51,10 +51,7 @@ $(function () {
                 url:'/getAllClass',
                 method:'get',
                 success:function (data) {
-                    //var classes = eval('(' + data + ')');
-                    console.log(typeof data);
-                    var data1=data.substring(2,data.length-2);
-                    var classes=data1.split("','");;
+                    var classes=JSON.parse(data);
                     var str='<div><select name="range" id="range" lay-filter="range">';
                     for(var i=0;i<classes.length;i++){
                         str+='<option value="'+classes[i]+'">'+classes[i]+'</option>';

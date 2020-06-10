@@ -62,4 +62,6 @@ public interface PostMapper {
     int updateByPrimaryKey(Post record);
 
     List<Post> selectAllPosts();
+
+    List<Post> selPostByType(String type);
 }

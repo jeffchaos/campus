@@ -58,5 +58,5 @@ public interface MessageMapper {
     int creatMsg(String content, Timestamp PublishTime, String AcceptClass);
     List<List<Message>> getAllMsg(String searchInfo, int start, int end);
 
-    List<Message> selMessageByUserId(int userId);
+    List<Message> selMessageByUserId(String userId);
 }

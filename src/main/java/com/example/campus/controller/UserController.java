@@ -26,7 +26,7 @@ public class UserController {
     @RequestMapping("/getUsers")
         public List<User> getDbType() {
             //CreateTestData createTestData = new CreateTestData();
-            createTestData.createDataOfProduct();
+            createTestData.createDataOfPost();
             System.out.println("到了");
             return userService.getAllUsers();
     }
@@ -77,7 +77,7 @@ public class UserController {
      * @return
      */
     @GetMapping("getColletionByUserId")
-    public String getColletionByUserId(Integer userId){
+    public String getColletionByUserId(String userId){
         Map<String ,Object> map=new HashMap<>();
         map.put("colletion",userService.getColletionByUserId(userId));
         return JSONObject.toJSONString(new Result(map,"200","success"));
@@ -90,7 +90,7 @@ public class UserController {
      * @return
      */
     @PostMapping("setColletion")
-    public String setColletion(Integer userId,String productId){
+    public String setColletion(String userId,String productId){
         if(1==userService.setColletion(userId,productId)){
             return JSONObject.toJSONString(new Result("200","success"));
         }else{

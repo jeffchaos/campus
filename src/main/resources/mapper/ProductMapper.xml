@@ -217,7 +217,7 @@
         where
           status = 1
     </select>
-    <select id="selByType" resultType="com.example.campus.entity.Product">
+    <select id="selByType" resultMap="BaseResultMap">
         select
           id,
           decription,

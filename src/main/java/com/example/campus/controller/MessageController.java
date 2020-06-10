@@ -45,7 +45,7 @@ public class MessageController {
      * @return
      */
     @GetMapping("selMessageByUserId")
-    public String selMessageByUserId(Integer userId){
+    public String selMessageByUserId(String userId){
         Map<String ,Object> map=new HashMap<>();
         map.put("message",messageService.getMessageByUserId(userId));
         return JSONObject.toJSONString(new Result(map,"200","获取消息成功"));
