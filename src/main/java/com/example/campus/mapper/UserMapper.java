@@ -26,4 +26,8 @@ public interface UserMapper {
     User selectUserByUserNo(Map<String,String> map);
     List<User> getAllUsers();
     List<String> getAllClass();
+
+    String selColletionByUserId(int userId);
+
+    int updColletion(int userId,String collection);
 }

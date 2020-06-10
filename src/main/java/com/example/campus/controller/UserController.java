@@ -2,19 +2,16 @@ package com.example.campus.controller;
 
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
-import com.alibaba.fastjson.serializer.SerializerFeature;
 import com.example.campus.entity.Result;
 import com.example.campus.entity.User;
 import com.example.campus.service.UserService;
 import com.example.campus.utils.CreateTestData;
-import com.mysql.cj.xdevapi.JsonArray;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -73,4 +70,33 @@ public class UserController {
     public String getAllClass(){
                 return JSON.toJSONString(userService.getAllClass());
     }
+
+    /**
+     * 查找已收藏的商品
+     * @param userId
+     * @return
+     */
+    @GetMapping("getColletionByUserId")
+    public String getColletionByUserId(Integer userId){
+        Map<String ,Object> map=new HashMap<>();
+        map.put("colletion",userService.getColletionByUserId(userId));
+        return JSONObject.toJSONString(new Result(map,"200","success"));
+    }
+
+    /**
+     * 收藏商品
+     * @param userId
+     * @param productId
+     * @return
+     */
+    @PostMapping("setColletion")
+    public String setColletion(Integer userId,String productId){
+        if(1==userService.setColletion(userId,productId)){
+            return JSONObject.toJSONString(new Result("200","success"));
+        }else{
+            return JSONObject.toJSONString(new Result("201","falure"));
+        }
+    }
+
+
 }

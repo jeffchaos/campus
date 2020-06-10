@@ -58,4 +58,6 @@ public interface ProductMapper {
     List<Product> selByType(String type);
 
     List<Product> selByUser(String userno);
+
+
 }

@@ -46,4 +46,11 @@ public class UserService {
     public List<String> getAllClass(){
         return userMapper.getAllClass();
     }
+
+    public String getColletionByUserId(int userId){return userMapper.selColletionByUserId(userId);}
+
+    public int setColletion(int userId ,String collection) {
+        String oldCollection = userMapper.selColletionByUserId(userId);
+        return userMapper.updColletion(userId, (oldCollection == null ? "" : oldCollection) + ";" + collection);
+    }
 }

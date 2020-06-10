@@ -135,4 +135,17 @@
 
     SELECT FOUND_ROWS() as total;
   </select>
+
+    <select id="selMessageByUserId" resultType="BaseResultMap">
+        select
+          Id,
+          Content,
+          PublishTime,
+          AcceptClass
+        from
+          message,user
+        where
+          ClassName=AcceptClass
+          and UserNo = #{userId}
+    </select>
 </mapper>

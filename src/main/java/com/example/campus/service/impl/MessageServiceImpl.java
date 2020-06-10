@@ -1,6 +1,5 @@
 package com.example.campus.service.impl;
 
-import com.example.campus.entity.Comment;
 import com.example.campus.entity.Message;
 import com.example.campus.mapper.MessageMapper;
 import com.example.campus.service.MessageService;
@@ -36,5 +35,10 @@ public class MessageServiceImpl implements MessageService {
         data.put("msgList",list1);
         data.put("total",list.get(1).get(0));
         return data;
+    }
+
+    @Override
+    public List<Message> getMessageByUserId(int userId) {
+        return messageMapper.selMessageByUserId(userId);
     }
 }

@@ -233,4 +233,22 @@
   <select id="getAllClass" resultType="String">
     select distinct ClassName from user
   </select>
+
+    <select id="selColletionByUserId">
+        select
+            Colletion
+        from
+            user
+        where
+            and UserNo = #{userId}
+    </select>
+
+    <update id="updColletion">
+        update
+          user
+        set
+          Colletion = #{collection}
+        where
+          UserNo = #{userId}
+    </update>
 </mapper>

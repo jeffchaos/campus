@@ -1,6 +1,5 @@
 package com.example.campus.mapper;
 
-import com.example.campus.entity.Comment;
 import com.example.campus.entity.Message;
 
 import java.sql.Timestamp;
@@ -58,4 +57,6 @@ public interface MessageMapper {
 
     int creatMsg(String content, Timestamp PublishTime, String AcceptClass);
     List<List<Message>> getAllMsg(String searchInfo, int start, int end);
+
+    List<Message> selMessageByUserId(int userId);
 }
