@@ -48,7 +48,7 @@ public class UserController {
 
 
     @RequestMapping(value = "addUser",method = RequestMethod.POST)
-    public int addUser(HttpServletRequest request, HttpServletResponse response){
+    public String addUser(HttpServletRequest request, HttpServletResponse response){
         JSONObject userJson = JSONObject.parseObject(request.getParameter("user"));
         User user = new User();
         user.setUserno(userJson.getString("userNo"));
@@ -58,7 +58,10 @@ public class UserController {
         user.setUserrealname(userJson.getString(""));
         user.setPassword(userJson.getString(""));
         user.setInstitute(userJson.getString(""));
-        return userService.insertUser(user);
+        Map<String ,Object> map=new HashMap<>();
+        map.put("data",userService.insertUser(user));
+        map.put("api","addUser");
+        return JSONObject.toJSONString(new Result(map,"200","添加用户成功"));
     }
 
     @PostMapping("userInfo")

@@ -3,6 +3,7 @@ package com.example.campus.controller;
 import com.alibaba.fastjson.JSONObject;
 import com.example.campus.entity.Post;
 import com.example.campus.entity.Result;
+import com.example.campus.service.CommentService;
 import com.example.campus.service.PostService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -18,6 +19,8 @@ import java.util.Map;
 public class PostController {
     @Autowired
     private PostService postService;
+    @Autowired
+    private CommentService commentService;
     @RequestMapping(value = "getAllPosts",method = RequestMethod.GET)
     public Map<String,List<Post>> getAllPosts(){
         Map<String,List<Post>> map = new HashMap<>();
@@ -73,6 +76,14 @@ public class PostController {
         map.put("data",postService.getPostByType(type));
         map.put("api","getPostByType");
         return JSONObject.toJSONString(new Result(map,"200","获取帖子详情成功"));
+    }
+
+    @GetMapping("getPostById")
+    public String getPostById(String id){
+        Map<String ,Object> map=new HashMap<>();
+        map.put("data",commentService.selCommentByPostId(Integer.parseInt(id)));
+        map.put("api","getPostById");
+        return JSONObject.toJSONString(new Result(map,"200","获取帖子评论成功"));
     }
 
 }

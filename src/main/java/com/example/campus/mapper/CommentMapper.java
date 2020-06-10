@@ -57,4 +57,6 @@ public interface CommentMapper {
     List<List<Comment>> getAllComment(String searchInfo,int start, int end);
 
     void delComments(List<String> ids);
+
+    List<Comment> selCommentByPostId(int id);
 }

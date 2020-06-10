@@ -197,8 +197,26 @@
       #{ids}
     </foreach>
   </delete>
+  
+  <select id="selCommentByPostId" resultMap="BaseResultMap">
+    SELECT
+    `comment`.CommentId,
+    `comment`.CommentDetail,
+    `comment`.UserId,
+    `comment`.PostId,
+    `comment`.IsResonse,
+    `comment`.ResonseId,
+    `comment`.Goods,
+    `comment`.Bads,
+    `comment`.PublishTime
+    FROM
+    `comment`
+    WHERE
+    `comment`.PostId = #{id}
+  </select>
 
   <resultMap id="total" type="java.lang.Integer">
     <result column="total" />
   </resultMap>
+  
 </mapper>

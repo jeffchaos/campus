@@ -1,7 +1,9 @@
 package com.example.campus.controller;
 
 import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.JSONObject;
 import com.alibaba.fastjson.serializer.SerializerFeature;
+import com.example.campus.entity.Comment;
 import com.example.campus.entity.Result;
 import com.example.campus.service.CommentService;
 import com.sun.org.apache.xml.internal.security.Init;
@@ -9,9 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.lang.reflect.Type;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
+import java.util.*;
 
 @RestController
 @RequestMapping("comment")
@@ -57,5 +57,13 @@ public class CommentController {
                 ,"yyyy-MM-dd hh:mm:ss"
                 , SerializerFeature.WriteNonStringValueAsString);
         return result;
+    }
+    @PostMapping("insertComment")
+    public String insertComment(String data){
+        Map<String ,Object> map=new HashMap<>();
+        Comment comment = JSON.parseObject(data,Comment.class);
+        map.put("data",commentService.insertComment(comment));
+        map.put("api","insertComment");
+        return JSONObject.toJSONString(new Result(map,"200","插入评论成功！"));
     }
 }
