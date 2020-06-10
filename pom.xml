@@ -18,7 +18,19 @@
         <java.version>1.8</java.version>
     </properties>
 
+    <!--sql log-->
     <dependencies>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+            <exclusions>
+                <exclusion>
+                    <groupId>org.springframework.boot</groupId>
+                    <artifactId>spring-boot-starter-logging</artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+
         <!--热部署坐标-->
         <dependency>
             <groupId>org.springframework.boot</groupId>

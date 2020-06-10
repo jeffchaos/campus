@@ -1,0 +1,29 @@
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="../layui/css/layui.css">
+    <script src="../layui/layui.all.js"></script>
+    <script src="../js/jquery-3.4.1.js"></script>
+    <script src="./js/Comment.js"></script>
+    <script src="../layui/layui.js"></script>
+</head>
+<body>
+<form class="layui-form" action="">
+    <div class="layui-form-item">
+        <div class="layui-input-block layui-input-inline">
+            <input type="text" id="searchInput" name="title" placeholder="输入关键字" autocomplete="off" class="layui-input">
+        </div>
+        <div class="layui-input-block layui-input-inline">
+            <span class="fly-search" id="searchButton"  style="float: left"><i class="layui-icon"></i></span>
+        </div>
+        <div class="layui-btn-group demoTable">
+            <button class="layui-btn layui-btn-danger" id="getCheckData" type="button" ><i class="layui-icon"></i>批量删除</button>
+        </div>
+    </div>
+</form>
+<table id="commentList" lay-filter="monitorToolbar" style="font-size: 12px" lay-data="{id:'commentid'}"></table>
+<script type="text/html" id="barHandle">
+    <!-- 这里同样支持 laytpl 语法，如： -->
+    <a class="layui-btn layui-btn-danger layui-btn-sm" lay-event="delComs">删除</a>
+    <!-- 隐藏的任务下载按钮，若已完成 则显示出来 -->
+</script>
+</body>

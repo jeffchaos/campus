@@ -25,4 +25,5 @@ public interface UserMapper {
     User selectByPrimaryKey(String userno);
     User selectUserByUserNo(Map<String,String> map);
     List<User> getAllUsers();
+    List<String> getAllClass();
 }

@@ -43,4 +43,7 @@ public class UserService {
 
 
 
+    public List<String> getAllClass(){
+        return userMapper.getAllClass();
+    }
 }

@@ -91,7 +91,7 @@ public class ProductController {
         return "ok";
     }
 
-    @GetMapping("products")
+    @GetMapping("getProductsByType")
     public String getProductByType(String type){
         List<Product> product = productService.getProductByType(type);
         Map<String,Object> map=new HashMap<>();

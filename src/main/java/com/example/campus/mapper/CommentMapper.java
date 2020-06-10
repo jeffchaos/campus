@@ -1,6 +1,9 @@
 package com.example.campus.mapper;
 
 import com.example.campus.entity.Comment;
+import com.sun.org.apache.xml.internal.security.Init;
+
+import java.util.List;
 
 public interface CommentMapper {
     /**
@@ -51,5 +54,7 @@ public interface CommentMapper {
      */
     int updateByPrimaryKey(Comment record);
 
+    List<List<Comment>> getAllComment(String searchInfo,int start, int end);
 
+    void delComments(List<String> ids);
 }

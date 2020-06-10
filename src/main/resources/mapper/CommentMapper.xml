@@ -165,4 +165,29 @@
       Bads = #{bads,jdbcType=INTEGER}
     where CommentId = #{commentid,jdbcType=INTEGER}
   </update>
+
+  <select id="getAllComment" resultMap="BaseResultMap,total">
+    select SQL_CALC_FOUND_ROWS CommentId,
+           CommentDetail,UserId,PostId,IsResonse,ResonseId,Goods,Bads
+    from comment
+    where
+    1=1
+    <if test="searchInfo != ''">
+      and (CommentId like '%${searchInfo}%')
+    </if>
+    limit #{start},#{end};
+
+    SELECT FOUND_ROWS() as total;
+  </select>
+
+  <delete id="delComments">
+    delete from comment where CommentId in
+    <foreach item="ids" collection="list" open="(" close=")" separator=",">
+      #{ids}
+    </foreach>
+  </delete>
+
+  <resultMap id="total" type="java.lang.Integer">
+    <result column="total"/>
+  </resultMap>
 </mapper>
