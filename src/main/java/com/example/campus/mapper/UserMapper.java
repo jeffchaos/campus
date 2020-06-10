@@ -21,6 +21,8 @@ public interface UserMapper {
      * @mbg.generated Tue Jun 02 17:06:36 CST 2020
      */
     int insertSelective(User record);
+
+    User selectByPrimaryKey(String userno);
     User selectUserByUserNo(Map<String,String> map);
     List<User> getAllUsers();
 }

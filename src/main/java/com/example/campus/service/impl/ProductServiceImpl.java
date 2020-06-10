@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
+import javax.annotation.Resource;
 import java.util.List;
 
 /**
@@ -17,7 +18,7 @@ import java.util.List;
 @Service
 public class ProductServiceImpl implements ProductService {
 
-    @Autowired
+    @Resource
     private ProductMapper productMapper;
 
     @Value("${ip}")
@@ -50,5 +51,16 @@ public class ProductServiceImpl implements ProductService {
         List<Product> productList = productMapper.selByType(type);
         convertImageUrl(productList);
         return productList;
+    }
+
+    @Override
+    public Product getProduct(int id) {
+        return productMapper.selectByPrimaryKey(id);
+    }
+
+    @Override
+    public List<Product> selectPublishProduct(String userno) {
+
+        return productMapper.selByUser(userno);
     }
 }

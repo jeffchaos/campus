@@ -1,5 +1,7 @@
 package com.example.campus.controller;
 
+import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
 import com.example.campus.entity.Product;
 import com.example.campus.entity.Result;
@@ -16,6 +18,8 @@ import org.springframework.web.multipart.MultipartRequest;
 import javax.servlet.http.HttpServletRequest;
 import java.io.File;
 import java.io.IOException;
+import java.sql.Timestamp;
+import java.text.SimpleDateFormat;
 import java.util.*;
 
 /**
@@ -28,7 +32,7 @@ public class ProductController {
     @Autowired
     private ProductService productService;
 
-    @GetMapping("products")
+    @GetMapping("product")
     public String getAllProduct(){
         Map<String, Object> map = new HashMap<>();
         map.put("products",productService.getAllProduct());
@@ -49,40 +53,41 @@ public class ProductController {
     @RequestMapping(value = "upload")
     public String upload(/*@RequestParam(value = "file_upload")*/ MultipartFile multipartFile, HttpServletRequest request, Model model, MultipartRequest multipartRequest){
         Map<String,MultipartFile> files= multipartRequest.getFileMap();
+        Product product = new Product();
+        String filePath = "E://imgsForCampusApp/";
+        JSONArray fileArray = new JSONArray();
         Iterator<String> fileNames = multipartRequest.getFileNames();
         while (fileNames.hasNext()){
             String next = fileNames.next();
-            MultipartFile file = files.get("pic_good0.jpg");
-
+            MultipartFile file = files.get(next);
+            String s= UUID.randomUUID().toString();
+            String extName = next.substring(next.lastIndexOf("."));
+            String h= s.replace("-", "");
+            String newName = s+extName;
+            File newFile = new File(filePath+newName);
+            if (!newFile.getParentFile().exists()) {
+                newFile.getParentFile().mkdirs(); }
+            try { file.transferTo(newFile);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            fileArray.add(newName);
         }
-//        if (multipartFile.isEmpty()) {
-//            System.out.`intln("文件为空空");
-//        }
+        product.setFlag(Integer.parseInt(request.getParameter("flag")));
+        product.setDecription(request.getParameter("decription"));
+        product.setPrice(Double.parseDouble(request.getParameter("price")));
+        product.setType(Integer.parseInt(request.getParameter("type")));
+        product.setPublishUserno(request.getParameter("publishUserno"));
+        product.setNegotiable(Integer.parseInt(request.getParameter("negotiable")));
+        product.setStatus(1);
+        product.setImgsrc(JSON.toJSONString(fileArray));
+        SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        Date date=new Date();
+        product.setPublishTime(Timestamp.valueOf(df.format(date)));
+        product.setTitle(request.getParameter("title"));
+        productService.storeOneProduct(product);
 
-        Enumeration params = request.getParameterNames();
-        while (params.hasMoreElements()){
-            String name = (String) params.nextElement();
-            String value = request.getParameter(name);
-            System.out.println(name+":"+value);
-        }
 
-        System.out.println("文件开始上传");
-        String fileName = multipartFile.getOriginalFilename();  // 文件名
-        System.out.println(fileName);
-        String suffixName = fileName.substring(fileName.lastIndexOf("."));  // 后缀名
-        //上传到服务器之中了
-//        String filePath = request.getSession().getServletContext().getRealPath("imgupload/");
-        String filePath = "E://imgsForCampusApp/";
-
-        File dest = new File(filePath + fileName);
-        if (!dest.getParentFile().exists()) {
-            dest.getParentFile().mkdirs(); }
-        try { multipartFile.transferTo(dest);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        String filename = "/temp-rainy/" + fileName;
-        model.addAttribute("filename", filename);
         return "ok";
     }
 
@@ -92,5 +97,15 @@ public class ProductController {
         Map<String,Object> map=new HashMap<>();
         map.put("productList",product);
         return JSONObject.toJSONString(new Result(map,"200","success"));
+    }
+
+    @GetMapping("selectProductById")
+    public String selectProductById(int id) {
+        return JSON.toJSONString(productService.getProduct(id));
+    }
+
+    @GetMapping("selectPublishProduct")
+    public String selectPublishProduct(String userno) {
+        return JSON.toJSONString(productService.selectPublishProduct(userno));
     }
 }

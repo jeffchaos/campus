@@ -37,5 +37,10 @@ public class UserService {
         return userMapper.selectUserByUserNo(map);
     }
 
+    public User selUserInfo(String userno){
+        return  userMapper.selectByPrimaryKey(userno);
+    }
+
+
 
 }

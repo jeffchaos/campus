@@ -1,13 +1,12 @@
 package com.example.campus.controller;
 
+import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
 import com.example.campus.entity.User;
 import com.example.campus.service.UserService;
 import com.example.campus.utils.CreateTestData;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -31,17 +30,9 @@ public class UserController {
         return userService.getAllUsers();
     }
     @RequestMapping(value = "login",method = RequestMethod.POST)
-    public Map<String,User> loginWithUserNo(HttpServletRequest request, HttpServletResponse response) throws IOException {
+    public String loginWithUserNo(HttpServletRequest request, HttpServletResponse response) throws IOException {
         String userNo = request.getParameter("userNo");
-        Map<String,String> map1 = new HashMap<>();
-        map1.put("userno",userNo);
-        User user = userService.selectUserByUserNo(map1);
-        Map<String,User> map = new HashMap<>();
-        if(user != null){
-            map.put("success",user);
-        }
-        else{ map.put("failed",null);}
-        return map;
+        return userNo;
 
 
     }
@@ -59,5 +50,10 @@ public class UserController {
         user.setPassword(userJson.getString(""));
         user.setInstitute(userJson.getString(""));
         return userService.insertUser(user);
+    }
+
+    @PostMapping("userInfo")
+    public String selUserInfo(String userno){
+        return JSON.toJSONString(userService.selUserInfo(userno));
     }
 }

@@ -233,4 +233,20 @@
           status = 1
           and type = #{type}
     </select>
+
+  <select id="selByUser" resultMap="BaseResultMap">
+    select
+          id,
+          decription,
+          price,
+          publish_time,
+          publish_userno,
+          imgsrc,
+          status,
+          flag
+        from
+          product
+        where
+          and publish_userno = #{userno}
+  </select>
 </mapper>

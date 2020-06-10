@@ -17,4 +17,8 @@ public interface ProductService {
 
     List<Product> getProductByType(String type);
 
+    Product getProduct(int id);
+
+    List<Product> selectPublishProduct(String userno);
+
 }
