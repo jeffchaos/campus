@@ -251,4 +251,17 @@
         where
           UserNo = #{userId}
     </update>
+
+    <insert id="insUser" >
+        insert into user (
+                          UserNo,
+                          UserRealName, UserType, Institute,
+                          IsResgister, Password, UserName,
+                          Email, Address, Tel,
+                          ClassName, Colletion)
+        values (#{userno},#{userrealname,jdbcType=VARCHAR}, #{usertype,jdbcType=INTEGER}, #{institute,jdbcType=VARCHAR},
+                #{isresgister,jdbcType=INTEGER}, #{password,jdbcType=VARCHAR}, #{username,jdbcType=VARCHAR},
+                #{email,jdbcType=VARCHAR}, #{address,jdbcType=VARCHAR}, #{tel,jdbcType=VARCHAR},
+                #{classname,jdbcType=VARCHAR}, #{colletion,jdbcType=INTEGER})
+    </insert>
 </mapper>

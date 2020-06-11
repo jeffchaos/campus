@@ -47,17 +47,16 @@ public class UserController {
     }
 
 
-    @RequestMapping(value = "addUser",method = RequestMethod.POST)
+    @PostMapping("addUser")
     public String addUser(HttpServletRequest request, HttpServletResponse response){
         JSONObject userJson = JSONObject.parseObject(request.getParameter("data"));
         User user = new User();
-        user.setUserno(userJson.getString("userNo"));
+        user.setUserno(userJson.getString("useron"));
         user.setIsresgister(1);
-        user.setAddress(userJson.getString(""));
-        user.setEmail(userJson.getString(""));
-        user.setUserrealname(userJson.getString(""));
-        user.setPassword(userJson.getString(""));
-        user.setInstitute(userJson.getString(""));
+        user.setAddress(userJson.getString("userAddresss"));
+        user.setEmail(userJson.getString("userEmail"));
+        user.setUserrealname(userJson.getString("userrealname"));
+        user.setInstitute(userJson.getString("userdwmc"));
         Map<String ,Object> map=new HashMap<>();
         map.put("data",userService.insertUser(user));
         map.put("api","addUser");

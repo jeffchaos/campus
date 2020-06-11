@@ -30,7 +30,7 @@ public class UserService {
         return userMapper.getAllUsers();
     }
     public int insertUser(User user){
-        return userMapper.insert(user);
+        return userMapper.insUser(user);
     }
 
     public User selectUserByUserNo(Map<String,String> map){
