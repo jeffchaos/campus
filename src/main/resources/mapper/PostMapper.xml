@@ -262,23 +262,27 @@
 
     <select id="selPostByType" resultMap="BaseResultMap1">
         select
-            PostId,
+            post.PostId,
             PostType,
-            UserNo,
+            post.UserNo,
             PostTitle,
             PostDetail,
             ImgUrl,
-            Goods,
-            Bads,
-            count(comment.1) Comments,
+            post.Goods,
+            post.Bads,
             Time,
             Status,
-            UserName as userName
+            UserName                 as userName,
+            count(comment.CommentId) as Comments
         from
-            post,user,comment
+            post
+            join user
+        on user.UserNo = post.userNo
+           left join comment
+           on comment.PostId = post.PostId
         where
-            comment.PostId=post.PostId
-            and user.UserNo=post.userNo
-            and type = #{PostType}
+            PostType = #{type}
+        group by
+            post.PostId
     </select>
 </mapper>

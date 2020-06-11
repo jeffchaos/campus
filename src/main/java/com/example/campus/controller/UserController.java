@@ -49,7 +49,7 @@ public class UserController {
 
     @RequestMapping(value = "addUser",method = RequestMethod.POST)
     public String addUser(HttpServletRequest request, HttpServletResponse response){
-        JSONObject userJson = JSONObject.parseObject(request.getParameter("user"));
+        JSONObject userJson = JSONObject.parseObject(request.getParameter("data"));
         User user = new User();
         user.setUserno(userJson.getString("userNo"));
         user.setIsresgister(1);
